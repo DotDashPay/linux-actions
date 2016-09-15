@@ -41,10 +41,19 @@ obj-$(CONFIG_USB_F_ACM)		+= usb_f_acm.o
 usb_f_ss_lb-y			:= f_loopback.o f_sourcesink.o
 obj-$(CONFIG_USB_F_SS_LB)	+= usb_f_ss_lb.o
 obj-$(CONFIG_USB_U_SERIAL)	+= u_serial.o
+obj-$(CONFIG_USB_U_ETHER)	+= u_ether.o
 usb_f_serial-y			:= f_serial.o
 obj-$(CONFIG_USB_F_SERIAL)	+= usb_f_serial.o
 usb_f_obex-y			:= f_obex.o
 obj-$(CONFIG_USB_F_OBEX)	+= usb_f_obex.o
+usb_f_rndis-y            	:= f_rndis.o
+obj-$(CONFIG_USB_F_RNDIS)    	+= usb_f_rndis.o
+u_rndis-y            		:= rndis.o
+obj-$(CONFIG_USB_U_RNDIS)    	+= u_rndis.o
+usb_f_ecm-y            		:= f_ecm.o
+obj-$(CONFIG_USB_F_ECM)        	+= usb_f_ecm.o
+usb_f_ecm_subset-y        	:= f_subset.o
+obj-$(CONFIG_USB_F_SUBSET)    	+= usb_f_ecm_subset.o
 
 #
 # USB gadget drivers

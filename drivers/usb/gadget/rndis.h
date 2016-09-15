@@ -16,6 +16,7 @@
 #define _LINUX_RNDIS_H
 
 #include <linux/rndis.h>
+#include "u_ether.h"
 #include "ndis.h"
 
 #define RNDIS_MAXIMUM_FRAME_SIZE	1518
@@ -189,7 +190,6 @@ typedef struct rndis_params
 	struct net_device	*dev;
 
 	u32			vendorID;
-	u8			max_pkt_per_xfer;
 	const char		*vendorDescr;
 	void			(*resp_avail)(void *v);
 	void			*v;
@@ -205,7 +205,6 @@ int  rndis_set_param_dev (u8 configNr, struct net_device *dev,
 int  rndis_set_param_vendor (u8 configNr, u32 vendorID,
 			    const char *vendorDescr);
 int  rndis_set_param_medium (u8 configNr, u32 medium, u32 speed);
-void rndis_set_max_pkt_xfer(u8 configNr, u8 max_pkt_per_xfer);
 void rndis_add_hdr (struct sk_buff *skb);
 int rndis_rm_hdr(struct gether *port, struct sk_buff *skb,
 			struct sk_buff_head *list);
@@ -217,8 +216,5 @@ int  rndis_signal_connect (int configNr);
 int  rndis_signal_disconnect (int configNr);
 int  rndis_state (int configNr);
 extern void rndis_set_host_mac (int configNr, const u8 *addr);
-
-int rndis_init(void);
-void rndis_exit (void);
 
 #endif  /* _LINUX_RNDIS_H */
